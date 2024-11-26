@@ -1,23 +1,20 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import "tailwindcss/tailwind.css";
 
-const Button = () => {
-  const [click, setClick] = React.useState(false);
-
-  const handleClick = () => {
-    setClick(!click);
-  };
+function MyButtonComponent() {
+  const [count, setCount] = useState(0);
 
   return (
-    <button
-      className={`bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ${
-        click ? "border-black" : ""
-      }`}
-      onClick={handleClick}
-    >
-      Click Me
-    </button>
+    <div className="flex justify-center items-center h-screen bg-black">
+      <button
+        className="animate-bounce bg-gray-800 text-white border-2 border-gray-700 p-4 rounded-md text-2xl sm:p-8 sm:text-4xl hover:bg-gray-700 transition-colors duration-300"
+        onClick={() => setCount(count + 1)}
+      >
+        Click me: {count}
+      </button>
+    </div>
   );
-};
+}
 
-export default Button;
+export default MyButtonComponent;
