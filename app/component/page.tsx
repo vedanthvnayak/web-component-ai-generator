@@ -1,22 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
-function ButtonComponent() {
-  const [text, setText] = useState("Hello");
+const Button = () => {
+  const [click, setClick] = React.useState(false);
 
-  const toggleText = () => {
-    setText((previousText) => (previousText === "Hello" ? "Hi" : "Hello"));
+  const handleClick = () => {
+    setClick(!click);
   };
 
   return (
     <button
-      onClick={toggleText}
-      className="bg-red-500 text-black border border-black w-full md:w-auto py-2 px-4 shadow-md hover:bg-red-600 
-      transition duration-200 ease-in-out sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl"
+      className={`bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ${
+        click ? "border-black" : ""
+      }`}
+      onClick={handleClick}
     >
-      {text}
+      Click Me
     </button>
   );
-}
+};
 
-export default ButtonComponent;
+export default Button;
